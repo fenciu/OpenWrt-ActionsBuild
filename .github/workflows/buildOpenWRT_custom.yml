@@ -104,6 +104,8 @@ jobs:
         sudo -E apt -qq clean
         sudo timedatectl set-timezone "$TIMEZONE"
         sudo mkdir -p /workdir
+        sudo mkdir -p /tmp 
+        sudo chmod 777 /tmp
         sudo chown $USER:$GROUPS /workdir
     
     - name: 提取系统信息
