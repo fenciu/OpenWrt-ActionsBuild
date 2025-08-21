@@ -91,6 +91,14 @@ jobs:
       image: ubuntu:noble  # 使用特定版本的基础镜像
       options: --user root  # 如果需要 root 权限
     steps:
+    - name: 初始化编译环境
+      env:
+        DEBIAN_FRONTEND: noninteractive
+        #非交互式环境
+      run: |   
+        apt-get  update -y
+        apt-get  upgrade -y
+        apt-get install -y   sudo
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
       with:
@@ -203,6 +211,7 @@ jobs:
         cd x-wrt
         echo -e "$(nproc) thread cpu"
         echo "Start Time: "$(date +"%Y/%m/%d %H:%M:%S")""
+        export FORCE_UNSAFE_CONFIGURE=1
         make -j1  V=s
         echo "End Time: "$(date +"%Y/%m/%d %H:%M:%S")""
         echo "::set-output name=status::success"
