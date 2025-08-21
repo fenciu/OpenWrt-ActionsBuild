@@ -91,7 +91,7 @@ jobs:
       image: ubuntu:noble  # 使用特定版本的基础镜像
       options: --user root  # 如果需要 root 权限
     steps:
-    - name: 初始化编译环境
+    - name: 初始化编译环境0
       env:
         DEBIAN_FRONTEND: noninteractive
         #非交互式环境
