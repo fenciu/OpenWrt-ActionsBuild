@@ -98,8 +98,8 @@ jobs:
       options: --user root  # 如果需要 root 权限
       volumes:
         - /mnt:/workdir     
-      env: |
-        FORCE_UNSAFE_CONFIGURE=1
+      env:
+        FORCE_UNSAFE_CONFIGURE: 1
     steps:
     - name: 检出仓库数据
       uses: actions/checkout@main
