@@ -213,7 +213,7 @@ jobs:
       id: organize
       if: steps.makefirmware.outputs.status == 'success'
       run: |
-        cd openwrt/bin/targets/*/*
+        cd x-wrt/bin/targets/*/*
         cp ../../../../.config ./build.config
         cp ../../../../feeds.conf.default ./feeds.conf.default
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
