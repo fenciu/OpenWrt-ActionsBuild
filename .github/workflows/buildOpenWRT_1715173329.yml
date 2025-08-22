@@ -87,9 +87,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    container:
-      image: ubuntu:noble  # 使用特定版本的基础镜像
-      options: --user root  # 如果需要 root 权限
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -118,9 +115,6 @@ jobs:
       uses: addnab/docker-run-action@v3
       with:
         image: ubuntu:noble
-        env: |
-          DEBIAN_FRONTEND: noninteractive
-          ANOTHER_VAR=world
         options: --user root
         volumes: ${{ github.event.inputs.resource_directory }}:${{ github.event.inputs.resource_directory }}
         run: |
