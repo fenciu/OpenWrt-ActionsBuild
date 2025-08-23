@@ -100,6 +100,23 @@ jobs:
         - /mnt:/workdir     
       env:
         FORCE_UNSAFE_CONFIGURE: 1
+        TIMEZONE: Asia/Shanghai
+        UPLOAD_ACTIONSRUNS: true
+        Resoure_DIR: ${{ github.event.inputs.resource_directory }}
+        REPO_URL: https://github.com/x-wrt/x-wrt
+        REPO_BRANCH: ${{ github.event.inputs.repo_branch }}
+        CONFIG_FILE: '${{ github.event.inputs.resource_directory }}/${{ github.event.inputs.config_file }}'
+        FEEDS_FILE: '${{ github.event.inputs.resource_directory }}/feeds.conf.default'
+        REPLACE_FEEDS: ${{ github.event.inputs.feeds_file }}
+        LOAD_FILES: ${{ github.event.inputs.files_path }}
+        FILES_PATH: '${{ github.event.inputs.resource_directory }}/files'
+        RUN_OPENWRTPATCH: ${{ github.event.inputs.openwrt_patch }}
+        OPENWRT_PATCH: '${{ github.event.inputs.resource_directory }}/openwrt_patch.sh'
+        RUN_BEFORPATCH: ${{ github.event.inputs.befor_patch }}
+        BEFOR_PATCH: '${{ github.event.inputs.resource_directory }}/make_befor.sh'
+        RUN_AFTERPATCH: ${{ github.event.inputs.after_patch }}
+        AFTER_PATCH: '${{ github.event.inputs.resource_directory }}/make_after.sh'
+        UPLOAD_RELEASE: ${{ github.event.inputs.upload_release }}
     steps:
     - name: 检出仓库数据
       uses: actions/checkout@main
