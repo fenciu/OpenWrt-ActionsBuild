@@ -182,6 +182,11 @@ jobs:
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE x-wrt/.config
         cat x-wrt/.config
+        ls -ltr /
+        echo "---"
+        ls -ltr $Resoure_DIR
+        rm -rf x-wrt/package/feeds/qmodem/fibocom_QMI_WWAN/src/qmi_wwan_f.c
+        mv $Resoure_DIR/qmi_wwan_f.c x-wrt/package/feeds/qmodem/fibocom_QMI_WWAN/src/
         
     - name: 执行编译前脚本
       if: env.RUN_BEFORPATCH == 'true' && steps.check.outputs.befor == 'success'
@@ -206,8 +211,6 @@ jobs:
         cd x-wrt
         echo -e "$(nproc) thread cpu"
         echo "Start Time: "$(date +"%Y/%m/%d %H:%M:%S")""
-        rm -rf package/feeds/qmodem/fibocom_QMI_WWAN/src/qmi_wwan_f.c
-        mv /$Resoure_DIR/qmi_wwan_f.c package/feeds/qmodem/fibocom_QMI_WWAN/src/
         make -j1 V=s
         echo "End Time: "$(date +"%Y/%m/%d %H:%M:%S")""
         echo "::set-output name=status::success"
