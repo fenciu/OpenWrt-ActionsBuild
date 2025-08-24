@@ -138,7 +138,7 @@ jobs:
          echo -e "CPU: $(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
          echo -e "UserName: $(whoami) \n"
          echo -e "SystemInfo: \n$(lsb_release  -a 2>&1 | grep -vi 'No LSB') \n"
-         
+         echo -e "kernel version: \n$(uname -r) \n"
     - name: 拉取OpenWRT仓库
       working-directory: /workdir
       run: |
